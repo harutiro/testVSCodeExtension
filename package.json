@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:test.helloWorld"
+        "onCommand:test.helloWorld",
+		"onCommand:test.helloOriginal"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +19,10 @@
 			{
 				"command": "test.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "test.helloOriginal",
+				"title": "call Original"
 			}
 		]
 	},
