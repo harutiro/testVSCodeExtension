@@ -10,6 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
     	myStatusBarItem.text = `${icon} ${name}`;
     	myStatusBarItem.show();
 	}
+	const myCommandId = 'test.helloOriginal';
+	myStatusBarItem.command = myCommandId;
+	myStatusBarItem.tooltip = `status bar item tooltip`;
 	context.subscriptions.push(myStatusBarItem);
 
 
