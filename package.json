@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:test.helloWorld",
-    "onCommand:test.helloOriginal"
+    "onCommand:test.helloOriginal",
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -41,6 +42,15 @@
           "group": "navigation"
         }
       ]
+    },
+    "icons": {
+      "icon-fire": {
+          "description": "Ubuntu icon",
+          "default": {
+              "fontPath": "./img/icomoon.woff",
+              "fontCharacter": "\\E9A9"
+          }
+      }
     }
   },
   "scripts": {
