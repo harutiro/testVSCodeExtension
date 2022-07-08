@@ -12,6 +12,7 @@
   "activationEvents": [
     "onCommand:test.helloWorld",
     "onCommand:test.helloOriginal",
+    "onCommand:test.getJson",
     "*"
   ],
   "main": "./out/extension.js",
@@ -26,8 +27,8 @@
         "title": "call Original"
       },
       {
-        "command": "test.helloOriginal",
-        "title": "call Original",
+        "command": "test.getJson",
+        "title": "getJson",
         "icon": {
           "dark": "./img/fire.gif",
           "light": "./img/setting.svg"
@@ -38,7 +39,7 @@
       "editor/title": [
         {
           "when": "",
-          "command": "test.helloOriginal",
+          "command": "test.getJson",
           "group": "navigation"
         }
       ]
