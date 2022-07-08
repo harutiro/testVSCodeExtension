@@ -1,4 +1,35 @@
 import * as vscode from 'vscode';
+import axios from 'axios';
+
+type password ={
+	phrase: string;
+};
+
+// type GetUsersResponse = {
+// 	data: password[];
+// };
+
+async function getPass(){
+	try{
+		const { data, status } = await axios.get<password>(
+				'https://corporatebs-generator.sameerkumar.website/',
+				{
+					headers: {
+					Accept: 'application/json',
+				},
+			},
+		);
+
+		console.log(JSON.stringify(data, null, 4));
+
+		console.log(data.phrase);
+
+		console.log('response status is: ', status);
+	}catch(error){
+		console.log('error');
+	}
+	
+}
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -7,8 +38,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const icon = isDevelopment ? '$(debug)' : '$(icon-fire)';
 	const name = vscode.workspace.name;
 	if (name) {
-    	myStatusBarItem.text = `${icon} Twitter`;
-    	myStatusBarItem.show();
+		myStatusBarItem.text = `${icon} Twitter`;
+		myStatusBarItem.show();
 	}
 	const myCommandId = 'test.helloOriginal';
 	myStatusBarItem.command = myCommandId;
@@ -27,8 +58,9 @@ export function activate(context: vscode.ExtensionContext) {
 			item.text = date.getHours().toString() + ":" + date.getMinutes().toString() + ":" + date.getSeconds().toString();
 			item.show();
 		};
-	
 		setInterval(printDate,100);
+
+		getPass();
 
 		vscode.window.showInformationMessage('Hello World from test!');
 	});
@@ -46,7 +78,6 @@ export function activate(context: vscode.ExtensionContext) {
 		const content = '{"phrase":"Professionally Plagiarize High-quality Ideas"}';
 		const filePath = path.join(vscode.workspace.rootPath, 'twitter.json');
 		fs.writeFileSync(filePath, content, 'utf8');
-
 		const openPath = vscode.Uri.file(filePath);
 			vscode.workspace.openTextDocument(openPath).then(doc => {
     vscode.window.showTextDocument(doc);
